@@ -17,7 +17,6 @@ import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AddEmployeeController implements Initializable {

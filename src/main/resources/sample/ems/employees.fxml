@@ -33,12 +33,12 @@
                   <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.5em" />
                </graphic>
             </Button>
-            <Button fx:id="importButton" contentDisplay="TOP" layoutX="361.0" layoutY="118.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="50.0" prefWidth="70.0" stylesheets="@styleEmp.css" text="Import " textFill="WHITE">
+            <Button fx:id="importButton" contentDisplay="TOP" layoutX="698.0" layoutY="118.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="50.0" prefWidth="109.0" stylesheets="@styleEmp.css" text="Import /Refresh" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="CLOUD_UPLOAD" size="1.5em" />
                </graphic>
             </Button>
-            <Button fx:id="exportButton" contentDisplay="TOP" layoutX="691.0" layoutY="118.0" mnemonicParsing="false" onAction="#exportButtonOnAction" prefHeight="50.0" prefWidth="70.0" stylesheets="@styleEmp.css" text="Export " textFill="WHITE">
+            <Button fx:id="exportButton" contentDisplay="TOP" layoutX="838.0" layoutY="118.0" mnemonicParsing="false" onAction="#exportButtonOnAction" prefHeight="50.0" prefWidth="70.0" stylesheets="@styleEmp.css" text="Export " textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="CLOUD_DOWNLOAD" size="1.5em" />
                </graphic>
@@ -71,7 +71,12 @@
             </TableView>
             <Button fx:id="editEmployeeButton" contentDisplay="TOP" layoutX="208.0" layoutY="118.0" mnemonicParsing="false" onAction="#editEmployeeButtonOnAction" prefHeight="50.0" prefWidth="100.0" stylesheets="@styleEmp.css" text="Edit Employee" textFill="WHITE">
                <graphic>
-                  <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.5em" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="1.5em" />
+               </graphic>
+            </Button>
+            <Button fx:id="deleteEmployeeButton" contentDisplay="TOP" layoutX="354.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteEmployeeButtonOnAction" prefHeight="50.0" prefWidth="109.0" stylesheets="@styleEmp.css" text="Delete Employee" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" glyphName="TRASH" size="1.5em" />
                </graphic>
             </Button>
          </children>

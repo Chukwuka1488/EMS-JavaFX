@@ -19,9 +19,6 @@ import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
-import java.sql.SQLException;
-
 import java.util.ResourceBundle;
 
 
@@ -114,33 +111,30 @@ public class EditEmployeeController implements Initializable {
     private ObservableList<EmployeesData> employeesData;
 
 
-    // Local static employee object will be used in our pass employee method
-    private static EmployeesData theEmployee = null;
-
     public void passEmployees(EmployeesData selectedEmployee) {
-        theEmployee = selectedEmployee;
-        idTextField.setText(theEmployee.getID());
-        sapTextField.setText(theEmployee.getSAP_Personalnummer());
-        spalteTextField.setText(theEmployee.getSpalte1());
-        vornameTextField.setText(theEmployee.getVorname());
-        nachnameTextField.setText(theEmployee.getNachname());
-        riTextField.setText(theEmployee.getRI());
-        verfugbarkeitTextField.setText(theEmployee.getVerfugbarkeit());
-        berufserfahrungTextField.setText(theEmployee.getBerufserfahrung());
-        anuTextField.setText(theEmployee.getANU());
-        mobilitatTextField.setText(theEmployee.getMobilitat());
-        kompetenzenTextField.setText(theEmployee.getKompetenzen());
-        toolsTextField.setText(theEmployee.getTools());
-        sprachenTextField.setText(theEmployee.getSprachen());
-        rtTextField.setText(theEmployee.getRT());
-        aktionenTextField.setText(theEmployee.getAktionen());
-        projektwunschTextField.setText(theEmployee.getProjektwunsch());
-        schwerpunktTextField.setText(theEmployee.getSchwerpunkt());
-        divisionTextField.setText(theEmployee.getDivision());
-        einheitTextField.setText(theEmployee.getEinheit());
-        positionriTextField.setText(theEmployee.getPosition_RI());
-        manager1TextField.setText(theEmployee.getManager1());
-        manager2TextField.setText(theEmployee.getManager2());
+        // Local static employee object will be used in our pass employee method
+        idTextField.setText(selectedEmployee.getID());
+        sapTextField.setText(selectedEmployee.getSAP_Personalnummer());
+        spalteTextField.setText(selectedEmployee.getSpalte1());
+        vornameTextField.setText(selectedEmployee.getVorname());
+        nachnameTextField.setText(selectedEmployee.getNachname());
+        riTextField.setText(selectedEmployee.getRI());
+        verfugbarkeitTextField.setText(selectedEmployee.getVerfugbarkeit());
+        berufserfahrungTextField.setText(selectedEmployee.getBerufserfahrung());
+        anuTextField.setText(selectedEmployee.getANU());
+        mobilitatTextField.setText(selectedEmployee.getMobilitat());
+        kompetenzenTextField.setText(selectedEmployee.getKompetenzen());
+        toolsTextField.setText(selectedEmployee.getTools());
+        sprachenTextField.setText(selectedEmployee.getSprachen());
+        rtTextField.setText(selectedEmployee.getRT());
+        aktionenTextField.setText(selectedEmployee.getAktionen());
+        projektwunschTextField.setText(selectedEmployee.getProjektwunsch());
+        schwerpunktTextField.setText(selectedEmployee.getSchwerpunkt());
+        divisionTextField.setText(selectedEmployee.getDivision());
+        einheitTextField.setText(selectedEmployee.getEinheit());
+        positionriTextField.setText(selectedEmployee.getPosition_RI());
+        manager1TextField.setText(selectedEmployee.getManager1());
+        manager2TextField.setText(selectedEmployee.getManager2());
     }
 
     @FXML
@@ -156,7 +150,7 @@ public class EditEmployeeController implements Initializable {
 
     public void updateEmployee() {
         Connection conn = DatabaseConnection.Connector();
-        PreparedStatement pst = null;
+        PreparedStatement pst;
         try {
             String value1 = idTextField.getText();
             String value2 = sapTextField.getText();

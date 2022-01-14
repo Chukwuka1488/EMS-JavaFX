@@ -28,6 +28,9 @@ public class EmployeesController implements Initializable {
     private Button addEmployeeButton;
 
     @FXML
+    private Button deleteEmployeeButton;
+
+    @FXML
     private Button backEmployeesButton;
 
     @FXML
@@ -108,7 +111,7 @@ public class EmployeesController implements Initializable {
 
     private ObservableList<EmployeesData> employeesData;
 
-    EmployeesData employee = null;
+//    EmployeesData employee = null;
 
     int ID = -1;
 
@@ -202,67 +205,8 @@ public class EmployeesController implements Initializable {
     // edit employee form stage
     public void editEmployeeButtonOnAction(ActionEvent event) throws SQLException {
         editEmployeeFormStage();
-        getSelected();
     }
 
-    // select employee from table
-
-//    public String value1;
-
-    @FXML
-    public void getSelected() throws SQLException {
-        ID = employeeTableView.getSelectionModel().getSelectedIndex();
-        if (ID <= -1) {
-            System.out.println("no index found");
-        } else {
-            System.out.println(ID);
-        }
-        // sap_personalnummer
-        String value1 = this.sapTableColumn.getCellData(ID);
-//        System.out.println(value1);
-        String value2 = this.spalte1TableColumn.getCellData(ID);
-        String value3 = this.vornameTableColumn.getCellData(ID);
-        String value4 = this.nachnameTableColumn.getCellData(ID);
-        String value5 = this.riTableColumn.getCellData(ID);
-        String value6 = String.valueOf(this.verfugbarkeitTableColumn.getCellData(ID));
-        String value7 = this.berufserfahrungTableColumn.getCellData(ID);
-        String value8 = this.anuTableColumn.getCellData(ID);
-        String value9 = this.mobilitatTableColumn.getCellData(ID);
-        String value10 = this.kompetenzenTableColumn.getCellData(ID);
-        String value11 = this.toolsTableColumn.getCellData(ID);
-        String value12 = this.sprachenTableColumn.getCellData(ID);
-        String value13 = this.rtTableColumn.getCellData(ID);
-        String value14 = this.aktionenTableColumn.getCellData(ID);
-        String value15 = this.projektwunschTableColumn.getCellData(ID);
-        String value16 = this.schwerpunktTableColumn.getCellData(ID);
-        String value17 = this.divisionTableColumn.getCellData(ID);
-        String value18 = this.einheitTableColumn.getCellData(ID);
-        String value19 = this.position_RITableColumn.getCellData(ID);
-        String value20 = this.manager1TableColumn.getCellData(ID);
-        String value21 = this.manager2TableColumn.getCellData(ID);
-
-
-
-    }
-
-    public void EditSapCellEvent(TableColumn.CellEditEvent<EmployeesData, String> editedCell) throws SQLException {
-        Connection conn = DatabaseConnection.Connector();
-        PreparedStatement pst = null;
-        try{
-            String sql = "UPDATE employee_acc SET SAP_Personalnummer = ? WHERE ID = ?";
-            assert conn != null;
-            pst = conn.prepareStatement(sql);
-//            pst.setString(1, value1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        assert pst != null;
-        pst.execute();
-        EmployeesData employeeSelected = employeeTableView.getSelectionModel().getSelectedItem();
-        employeeSelected.setSAP_Personalnummer(editedCell.getNewValue());
-    }
 
     public void editEmployeeFormStage() {
         try {
@@ -287,8 +231,30 @@ public class EmployeesController implements Initializable {
     }
 
     public void deleteEmployee() {
-//        employee = employeeTableView.getSelectionModel().getSelectedIndex();
-//        query = "DELETE FROM employee_acc WHERE ID =" + ID;
+        Connection conn = DatabaseConnection.Connector();
+        PreparedStatement pst;
+        ID = employeeTableView.getSelectionModel().getSelectedIndex();
+        if (ID <= -1) {
+            System.out.println("no index found");
+        }
+        // id number
+        String value1 = this.idTableColumn.getCellData(ID);
+
+        try {
+            String deleteQuery = "DELETE FROM employees_acc WHERE ID =? ";
+            assert conn != null;
+            pst = conn.prepareStatement(deleteQuery);
+
+            pst.setString(1, value1);
+            pst.executeUpdate();
+
+            pst.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 
 
