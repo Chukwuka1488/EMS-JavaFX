@@ -1,0 +1,274 @@
+color
+
+#2a62fe - darkblue
+
+ü Ü Ö ö 
+
+SAP_Personalnummer
+Spalte1
+Vorname
+Nachname
+RI
+Verfügbarkeit
+Berufserfahrung
+ANÜ
+Mobilität
+Kompetenzen
+Tools
+Sprachen
+RT
+Aktionen
+Projektwunsch
+Schwerpunkt
+Division
+Einheit
+Position_RI
+Manager1
+Manager2
+
+
+sapTableColumn
+spalte1TableColumn
+vornameTableColumn
+nachnameTableColumn
+riTableColumn
+verfügbarkeitTableColumn
+berufserfahrungTableColumn
+anüTableColumn
+mobilitätTableColumn
+kompetenzenTableColumn
+toolsTableColumn
+sprachenTableColumn
+rtTableColumn
+aktionenTableColumn
+projektwunschTableColumn
+schwerpunktTableColumn
+divisionTableColumn
+einheitTableColumn
+position_RITableColumn
+manager1TableColumn
+manager2TableColumn
+
+
+package tech.getarrays.employeemanager.model;
+
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Date;
+
+/*Serializable helps transform this java class into different types of stream
+ * @Entity: to ensure that this class is mapped to any database that is configured
+ *@Id: to indicate primary key
+ * */
+
+
+@Document
+public class Employee implements Serializable {
+
+    @Id
+    private String id;
+
+    @Indexed(unique = true)
+    @BsonProperty(value = "sap_personalnummer")
+    private Long SAP_Personalnummer;
+
+    @BsonProperty(value = "spalte_1")
+    private String Spalte1; // imageUrl
+
+    @BsonProperty(value = "vorname")
+    private String Vorname;
+
+    @BsonProperty(value = "nachname")
+    private String Nachname;
+
+    @BsonProperty(value = "r_i")
+    private String RI;
+
+    @BsonProperty(value = "verfugbarkeit")
+    private Date Verfugbarkeit;
+
+    @BsonProperty(value = "berufserfahrung")
+    private String Berufserfahrung;
+
+    @BsonProperty(value = "anu")
+    private String ANU;
+
+    @BsonProperty(value = "mobilitat")
+    private String Mobilitat;
+
+    @BsonProperty(value = "kompetenzen")
+    private String Kompetenzen;
+
+    @BsonProperty(value = "tools")
+    private String Tools;
+
+    @BsonProperty(value = "kompetenzen")
+    private String Sprachen;
+
+    @BsonProperty(value = "r_t")
+    private String RT;
+
+    @BsonProperty(value = "aktionen")
+    private String Aktionen;
+
+    @BsonProperty(value = "projektwunsch")
+    private String Projektwunsch;
+
+    @BsonProperty(value = "schwerpunkt")
+    private String Schwerpunkt;
+
+    @BsonProperty(value = "division")
+    private String Division;
+
+    @BsonProperty(value = "einheit")
+    private String Einheit;
+
+    @BsonProperty(value = "position_ri")
+    private String Position_RI;
+
+    @BsonProperty(value = "manager_1")
+    private String Manager1;
+
+    @BsonProperty(value = "manager_2")
+    private String Manager2;
+
+
+}
+
+spring.data.mongodb.authentication-database=admin
+spring.data.mongodb.username=rootuser
+spring.data.mongodb.password=rootpass
+spring.data.mongodb.database=employees
+spring.data.mongodb.port=27017
+spring.data.mongodb.host=localhost
+
+
+String id, Long SAP_Personalnummer, String Spalte1, String Vorname, String Nachname, String RI,
+                    Date Verfugbarkeit, String Berufserfahrung, String ANU, String Mobilitat, String Kompetenzen,
+                    String Tools, String Sprachen, String RT, String Aktionen, String Projektwunsch, String Schwerpunkt,
+                    String Division, String Einheit, String Position_RI, String Manager1, String Manager2
+
+
+
+
+package tech.getarrays.employeemanager.model;
+
+import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Date;
+//import java.sql.Date;
+
+import org.springframework.data.annotation.Id;
+
+import lombok.Data;
+
+@Data
+@Document(collection = "employees")
+public class Employee {
+
+    @Id
+    private String id;
+
+//    @Indexed(unique = true)
+//    @BsonProperty(value = "sap_personalnummer")
+//    private Long SAP_Personalnummer;
+
+//    @BsonProperty(value = "spalte_1")
+//    private String Spalte1; // imageUrl
+
+    @BsonProperty(value = "vorname")
+    private String Vorname;
+
+    @BsonProperty(value = "nachname")
+    private String Nachname;
+
+//    @BsonProperty(value = "r_i")
+//    private String RI;
+//
+//    @BsonProperty(value = "verfugbarkeit")
+//    private Date Verfugbarkeit;
+//
+//    @BsonProperty(value = "berufserfahrung")
+//    private String Berufserfahrung;
+//
+//    @BsonProperty(value = "anu")
+//    private String ANU;
+//
+//    @BsonProperty(value = "mobilitat")
+//    private String Mobilitat;
+//
+//    @BsonProperty(value = "kompetenzen")
+//    private String Kompetenzen;
+//
+//    @BsonProperty(value = "tools")
+//    private String Tools;
+//
+//    @BsonProperty(value = "kompetenzen")
+//    private String Sprachen;
+//
+//    @BsonProperty(value = "r_t")
+//    private String RT;
+//
+//    @BsonProperty(value = "aktionen")
+//    private String Aktionen;
+//
+//    @BsonProperty(value = "projektwunsch")
+//    private String Projektwunsch;
+//
+//    @BsonProperty(value = "schwerpunkt")
+//    private String Schwerpunkt;
+//
+//    @BsonProperty(value = "division")
+//    private String Division;
+//
+//    @BsonProperty(value = "einheit")
+//    private String Einheit;
+//
+//    @BsonProperty(value = "position_ri")
+//    private String Position_RI;
+//
+//    @BsonProperty(value = "manager_1")
+//    private String Manager1;
+//
+//    @BsonProperty(value = "manager_2")
+//    private String Manager2;
+
+    public Employee(String id, String Vorname, String Nachname) {
+//        super();
+        this.id = id;
+//        this.SAP_Personalnummer = SAP_Personalnummer;
+//        this.Spalte1 = Spalte1;
+        this.Vorname = Vorname;
+        this.Nachname = Nachname;
+//        this.RI = RI;
+//        this.Verfugbarkeit = Verfugbarkeit;
+//        this.Berufserfahrung = Berufserfahrung;
+//        this.ANU = ANU;
+//        this.Mobilitat = Mobilitat;
+//        this.Kompetenzen = Kompetenzen;
+//        this.Tools = Tools;
+//        this.Sprachen = Sprachen;
+//        this.RT = RT;
+//        this.Aktionen = Aktionen;
+//        this.Projektwunsch = Projektwunsch;
+//        this.Schwerpunkt = Schwerpunkt;
+//        this.Division = Division;
+//        this.Einheit = Einheit;
+//        this.Position_RI = Position_RI;
+//        this.Manager1 = Manager1;
+//        this.Manager2 = Manager2;
+
+    }
+
+}
