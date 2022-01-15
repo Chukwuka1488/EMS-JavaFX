@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-//    public static Connection databaseLink;
+    //    public static Connection databaseLink;
+//    private static Connection conn = null;
 
     public static Connection Connector() {
 //        String databaseName = "Employee";

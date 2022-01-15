@@ -72,15 +72,15 @@
                   <FontAwesomeIcon fill="#2a62fe" glyphName="PLANE" size="5em" />
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Download" textFill="#2a62fe" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="uploadFileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#uploadFileButtonOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Upload" textFill="#2a62fe" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Andale Mono" size="14.0" />
                </font>
                <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="DOWNLOAD" size="5em" />
+                  <FontAwesomeIcon fill="#2a62fe" glyphName="UPLOAD" size="5em" />
                </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Settings" textFill="#2a62fe" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="databaseUpload" contentDisplay="TOP" mnemonicParsing="false" onAction="#databaseUploadOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Settings" textFill="#2a62fe" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Andale Mono" size="14.0" />
                </font>
@@ -90,5 +90,6 @@
             </Button>
          </children>
       </GridPane>
+      <Label fx:id="singleFileText" layoutX="314.0" layoutY="526.0" prefHeight="17.0" prefWidth="171.0" textFill="#187c56" />
    </children>
 </AnchorPane>
