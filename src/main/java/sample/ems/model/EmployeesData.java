@@ -1,6 +1,6 @@
 package sample.ems.model;
 import javafx.beans.property.*;
-import java.sql.Date;
+
 
 public class EmployeesData {
     private final IntegerProperty ID;

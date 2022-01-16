@@ -68,7 +68,7 @@ public class LoginController implements Initializable {
 
     }
 
-    public void loginButtonOnAction(ActionEvent event) throws SQLException {
+    public void loginButtonOnAction(ActionEvent event){
         try {
             if (LoginModel.validateLogin(usernameTextField.getText(), enterPasswordField.getText())) {
                 loginMessageLabel.setText("Login Successful!");

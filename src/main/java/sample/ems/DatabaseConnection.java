@@ -5,13 +5,13 @@ import java.sql.DriverManager;
 
 public class DatabaseConnection {
     //    public static Connection databaseLink;
-//    private static Connection conn = null;
+
 
     public static Connection Connector() {
-//        String databaseName = "Employee";
-//        String databaseUser = "root";
-//        String databasePassword = " Onyema_07";
-//        String url = "jdbc:mysql://localhost/" + databaseName;
+        // String databaseName = "Employee";
+        // String databaseUser = "root";
+        // String databasePassword = " Onyema_07";
+        // String url = "jdbc:mysql://localhost/" + databaseName;
 
         try {
 //            Class.forName("com.mysql.cj.jdbc.Driver");

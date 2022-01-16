@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-//import javafx.scene.control.DatePicker;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -19,12 +19,13 @@ import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import java.util.ResourceBundle;
 
 
 public class EditEmployeeController implements Initializable {
-//    EmployeesData newEmployee = new EmployeesData("1000", "200220", "", "Jack", "Jones", "test", "2020-11-12", "test", "test",
-//            "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test");
 
     @FXML
     private ImageView addEmpImageView;
@@ -51,7 +52,7 @@ public class EditEmployeeController implements Initializable {
     private TextField riTextField;
 
     @FXML
-    private TextField verfugbarkeitTextField;
+    private DatePicker verfugbarkeitTextField;
 
     @FXML
     private TextField berufserfahrungTextField;
@@ -112,14 +113,19 @@ public class EditEmployeeController implements Initializable {
 
 
     public void passEmployees(EmployeesData selectedEmployee) {
+
         // Local static employee object will be used in our pass employee method
-        idTextField.setText(String.valueOf(selectedEmployee.getID()));
         sapTextField.setText(String.valueOf(selectedEmployee.getSAP_Personalnummer()));
         spalteTextField.setText(selectedEmployee.getSpalte1());
         vornameTextField.setText(selectedEmployee.getVorname());
         nachnameTextField.setText(selectedEmployee.getNachname());
         riTextField.setText(selectedEmployee.getRI());
-        verfugbarkeitTextField.setText(String.valueOf(selectedEmployee.getVerfugbarkeit()));
+        // parsing the string to convert it into date
+        String JE_date = selectedEmployee.getVerfugbarkeit();
+        DateTimeFormatter JEFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate local_date = LocalDate.parse(JE_date, JEFormatter);
+        System.out.println(local_date);
+        verfugbarkeitTextField.setValue(local_date);
         berufserfahrungTextField.setText(selectedEmployee.getBerufserfahrung());
         anuTextField.setText(selectedEmployee.getANU());
         mobilitatTextField.setText(selectedEmployee.getMobilitat());
@@ -152,13 +158,14 @@ public class EditEmployeeController implements Initializable {
         Connection conn = DatabaseConnection.Connector();
         PreparedStatement pst;
         try {
+            DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             String value1 = idTextField.getText();
             String value2 = sapTextField.getText();
             String value3 = spalteTextField.getText();
             String value4 = vornameTextField.getText();
             String value5 = nachnameTextField.getText();
             String value6 = riTextField.getText();
-            String value7 = verfugbarkeitTextField.getText();
+            String value7 = verfugbarkeitTextField.getValue().format(formattedDate);
             String value8 = berufserfahrungTextField.getText();
             String value9 = anuTextField.getText();
             String value10 = mobilitatTextField.getText();
@@ -197,7 +204,7 @@ public class EditEmployeeController implements Initializable {
                     "Einheit = '" + value19 + "', " +
                     "Position_RI = '" + value20 + "', " +
                     "Manager1 = '" + value21 + "', " +
-                    "Manager2 = '" + value22 + "' WHERE ID = '"+value1+"' ";
+                    "Manager2 = '" + value22 + "' WHERE ID = '" + value1 + "' ";
 
             assert conn != null;
             pst = conn.prepareStatement(sql);
@@ -238,7 +245,7 @@ public class EditEmployeeController implements Initializable {
         vornameTextField.setText("");
         nachnameTextField.setText("");
         riTextField.setText("");
-        verfugbarkeitTextField.setText(null);
+        verfugbarkeitTextField.setValue(null);
         berufserfahrungTextField.setText("");
         anuTextField.setText("");
         mobilitatTextField.setText("");

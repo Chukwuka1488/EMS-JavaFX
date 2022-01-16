@@ -17,6 +17,7 @@ import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class AddEmployeeController implements Initializable {
@@ -125,6 +126,7 @@ public class AddEmployeeController implements Initializable {
 
     public void createEmployee() {
         try {
+            DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             Connection conn = DatabaseConnection.Connector();
             assert conn != null;
             PreparedStatement ps = conn.prepareStatement("INSERT INTO employees_acc(SAP_Personalnummer, Spalte1, " +
@@ -136,7 +138,7 @@ public class AddEmployeeController implements Initializable {
             ps.setString(3, this.vornameTextField.getText());
             ps.setString(4, this.nachnameTextField.getText());
             ps.setString(5, this.riTextField.getText());
-            ps.setString(6, ((TextField)this.verfugbarkeitTextField.getEditor()).getText());
+            ps.setString(6, this.verfugbarkeitTextField.getValue().format(formattedDate));
             ps.setString(7, this.berufserfahrungTextField.getText());
             ps.setString(8, this.anuTextField.getText());
             ps.setString(9, this.mobilitatTextField.getText());

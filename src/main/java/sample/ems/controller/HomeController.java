@@ -1,7 +1,6 @@
 package sample.ems.controller;
 
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.*;
 
 import java.io.*;
@@ -27,6 +26,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -76,8 +76,7 @@ public class HomeController implements Initializable {
 
         Connection conn = DatabaseConnection.Connector();
         assert conn != null;
-//        conn.setAutoCommit(false);
-        PreparedStatement pst = null;
+        PreparedStatement pst;
         FileChooser fileChooser = new FileChooser();
         // Set Extension filter
         FileChooser.ExtensionFilter extFilterXlsx = new FileChooser.ExtensionFilter("Excel Files (*.xlsx)", excelFile);
@@ -113,7 +112,7 @@ public class HomeController implements Initializable {
                         "Sprachen, RT, Aktionen, Projektwunsch, Schwerpunkt, Division, Einheit, Position_RI, Manager1, " +
                         "Manager2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 pst = conn.prepareStatement(loadFile);
-                FileInputStream fileInput = new FileInputStream(new File(excelFilePath));
+                FileInputStream fileInput = new FileInputStream(excelFilePath);
 
                 Workbook workbook = new XSSFWorkbook(fileInput);
 
@@ -122,16 +121,14 @@ public class HomeController implements Initializable {
                 for (int i = 1; i < sheet.getLastRowNum(); i++) {
                     row = sheet.getRow(i);
 
-
-
+                    DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
                     DataFormatter formatter = new DataFormatter(); //creating formatter using the default locale
-//                    formatter.formatCellValue(row.getCell(0));
                     pst.setString(1, row.getCell(0).getStringCellValue());
                     pst.setString(2, formatter.formatCellValue(row.getCell(1)));
                     pst.setString(3, row.getCell(2).getStringCellValue());
                     pst.setString(4, row.getCell(3).getStringCellValue());
                     pst.setString(5, row.getCell(4).getStringCellValue());
-                    pst.setString(6, String.valueOf(row.getCell(5).getDateCellValue()));
+                    pst.setString(6, row.getCell(5).getLocalDateTimeCellValue().format(formattedDate));
                     pst.setString(7, row.getCell(6).getStringCellValue());
                     pst.setString(8, row.getCell(7).getStringCellValue());
                     pst.setString(9, row.getCell(8).getStringCellValue());

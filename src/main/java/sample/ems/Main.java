@@ -1,25 +1,13 @@
 package sample.ems;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.scene.text.Font;
-
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Main extends Application {
-    private final Desktop desktop = Desktop.getDesktop();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -34,12 +22,4 @@ public class Main extends Application {
         launch();
     }
 
-    private void openFile(File file) {
-        try {
-
-            desktop.open(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
