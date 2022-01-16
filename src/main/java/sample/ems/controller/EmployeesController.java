@@ -12,11 +12,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import sample.ems.DatabaseConnection;
 import sample.ems.model.EmployeesData;
 import sample.ems.Main;
 
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -189,10 +196,12 @@ public class EmployeesController implements Initializable {
         });
     }
 
+    // onclick the data from the database is loaded or refreshed
     public void importButtonOnAction(ActionEvent event) {
         LoadEmployeesData();
     }
 
+    // method to import data from database into javafx
     public void LoadEmployeesData() {
         try {
             Connection conn = DatabaseConnection.Connector();
@@ -326,6 +335,80 @@ public class EmployeesController implements Initializable {
 
 
     public void exportButtonOnAction(ActionEvent event) {
+        Connection conn = DatabaseConnection.Connector();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            String exportQuery = "SELECT * FROM employees_acc";
+            assert conn != null;
+            pst = conn.prepareStatement(exportQuery);
+            rs = pst.executeQuery();
+
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Employee Data");
+            Row header = sheet.createRow(0);
+//            header.createCell(0).setCellValue("ID");
+            header.createCell(0).setCellValue("SAP_Personalnummer");
+            header.createCell(1).setCellValue("Spalte1");
+            header.createCell(2).setCellValue("Vorname");
+            header.createCell(3).setCellValue("Nachname");
+            header.createCell(4).setCellValue("RI");
+            header.createCell(5).setCellValue("Verfugbarkeit");
+            header.createCell(6).setCellValue("Berufserfahrung");
+            header.createCell(7).setCellValue("ANU");
+            header.createCell(8).setCellValue("Mobilitat");
+            header.createCell(9).setCellValue("Kompetenzen");
+            header.createCell(10).setCellValue("Tools");
+            header.createCell(11).setCellValue("Sprachen");
+            header.createCell(12).setCellValue("RT");
+            header.createCell(13).setCellValue("Aktionen");
+            header.createCell(14).setCellValue("Projektwunsch");
+            header.createCell(15).setCellValue("Schwerpunkt");
+            header.createCell(16).setCellValue("Division");
+            header.createCell(17).setCellValue("Einheit");
+            header.createCell(18).setCellValue("Position_RI");
+            header.createCell(19).setCellValue("Manager1");
+            header.createCell(20).setCellValue("Manager2");
+            int index = 1;
+            while (rs.next()) {
+
+                Row row = sheet.createRow(index);
+//                row.createCell(0).setCellValue(rs.getString("ID"));
+                row.createCell(0).setCellValue(rs.getString("SAP_Personalnummer"));
+                row.createCell(1).setCellValue(rs.getString("Spalte1"));
+                row.createCell(2).setCellValue(rs.getString("Vorname"));
+                row.createCell(3).setCellValue(rs.getString("Nachname"));
+                row.createCell(4).setCellValue(rs.getString("RI"));
+                row.createCell(5).setCellValue(rs.getString("Verfugbarkeit"));
+                row.createCell(6).setCellValue(rs.getString("Berufserfahrung"));
+                row.createCell(7).setCellValue(rs.getString("ANU"));
+                row.createCell(8).setCellValue(rs.getString("Mobilitat"));
+                row.createCell(9).setCellValue(rs.getString("Kompetenzen"));
+                row.createCell(10).setCellValue(rs.getString("Tools"));
+                row.createCell(11).setCellValue(rs.getString("Sprachen"));
+                row.createCell(12).setCellValue(rs.getString("RT"));
+                row.createCell(13).setCellValue(rs.getString("Aktionen"));
+                row.createCell(14).setCellValue(rs.getString("Projektwunsch"));
+                row.createCell(15).setCellValue(rs.getString("Schwerpunkt"));
+                row.createCell(16).setCellValue(rs.getString("Division"));
+                row.createCell(17).setCellValue(rs.getString("Einheit"));
+                row.createCell(18).setCellValue(rs.getString("Position_RI"));
+                row.createCell(19).setCellValue(rs.getString("Manager1"));
+                row.createCell(20).setCellValue(rs.getString("Manager2"));
+                index++;
+            }
+            FileOutputStream fileOut = new FileOutputStream("/Users/haykay14/Desktop/EmployeeData.xlsx");
+
+            System.out.println("File Exported");
+            workbook.write(fileOut);
+            fileOut.close();
+
+            pst.close();
+            rs.close();
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void backEmployeesButtonOnAction(ActionEvent event) {
