@@ -1,12 +1,11 @@
 package sample.ems.model;
-
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import java.sql.Date;
 
 public class EmployeesData {
-    private final StringProperty ID;
+    private final IntegerProperty ID;
 
-    private final StringProperty SAP_Personalnummer;
+    private final IntegerProperty SAP_Personalnummer;
 
     private final StringProperty Spalte1; // imageUrl
 
@@ -15,7 +14,6 @@ public class EmployeesData {
     private final StringProperty Nachname;
 
     private final StringProperty RI;
-
 
     private final StringProperty Verfugbarkeit;
 
@@ -53,7 +51,7 @@ public class EmployeesData {
 
     private final StringProperty Manager2;
 
-    public EmployeesData(String id, String sap_personalnummer, String spalte1,
+    public EmployeesData(Integer id, Integer sap_personalnummer, String spalte1,
                          String vorname, String nachname, String ri,
                          String verfugbarkeit, String berufserfahrung, String anu,
                          String mobilitat, String kompetenzen, String tools,
@@ -61,8 +59,8 @@ public class EmployeesData {
                          String projektwunsch, String schwerpunkt, String division,
                          String einheit, String position_ri, String manager1,
                          String manager2) {
-        this.ID = new SimpleStringProperty(id);
-        this.SAP_Personalnummer = new SimpleStringProperty(sap_personalnummer);
+        this.ID = new SimpleIntegerProperty(id);
+        this.SAP_Personalnummer = new SimpleIntegerProperty(sap_personalnummer);
         this.Spalte1 = new SimpleStringProperty(spalte1);
         this.Vorname = new SimpleStringProperty(vorname);
         this.Nachname = new SimpleStringProperty(nachname);
@@ -86,29 +84,29 @@ public class EmployeesData {
     }
 
     // getter/setter ID JavaFX
-    public StringProperty IDProperty() {
+    public IntegerProperty IDProperty() {
         return this.ID;
     }
 
-    public String getID() {
+    public Integer getID() {
         return this.IDProperty().get();
     }
 
-    public void setID(final String ID) {
+    public void setID(final int ID) {
         this.IDProperty().set(ID);
 
     }
 
     // getter/setter ID JavaFX
-    public StringProperty SAP_PersonalnummerProperty() {
+    public IntegerProperty SAP_PersonalnummerProperty() {
         return this.SAP_Personalnummer;
     }
 
-    public String getSAP_Personalnummer() {
+    public Integer getSAP_Personalnummer() {
         return this.SAP_PersonalnummerProperty().get();
     }
 
-    public void setSAP_Personalnummer(final String SAP_Personalnummer) {
+    public void setSAP_Personalnummer(final int SAP_Personalnummer) {
         this.SAP_PersonalnummerProperty().set(SAP_Personalnummer);
     }
 
@@ -170,6 +168,7 @@ public class EmployeesData {
     }
 
     public String getVerfugbarkeit() {
+
         return this.VerfugbarkeitProperty().get();
     }
 

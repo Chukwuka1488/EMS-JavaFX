@@ -26,13 +26,8 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Employee Management System");
-
-
         stage.setScene(scene);
         stage.show();
-
-
-//        openFile()
     }
 
     public static void main(String[] args) {
@@ -44,7 +39,6 @@ public class Main extends Application {
 
             desktop.open(file);
         } catch (IOException e) {
-//            Logger.getLogger(FileChooserSample.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
     }

@@ -1,18 +1,12 @@
 package sample.ems.controller;
 
-//import org.apache.poi.ss.usermodel.Cell;
-//import org.apache.poi.ss.usermodel.Row;
-
 import org.apache.poi.ss.usermodel.*;
-//import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.*;
 
 import java.io.*;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-import javafx.scene.control.Alert;
 
 import sample.ems.DatabaseConnection;
 import sample.ems.Main;
@@ -34,7 +28,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -65,8 +58,9 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         excelFile = new ArrayList<>();
         excelFile.add("*.xlsx");
-    }
 
+
+    }
 
     public void quitButtonHomePageOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) quitButtonHomePage.getScene().getWindow();
@@ -82,18 +76,14 @@ public class HomeController implements Initializable {
 
         Connection conn = DatabaseConnection.Connector();
         assert conn != null;
+//        conn.setAutoCommit(false);
         PreparedStatement pst = null;
-
         FileChooser fileChooser = new FileChooser();
-
         // Set Extension filter
-
         FileChooser.ExtensionFilter extFilterXlsx = new FileChooser.ExtensionFilter("Excel Files (*.xlsx)", excelFile);
-
         fileChooser.getExtensionFilters().addAll(extFilterXlsx);
         File file = fileChooser.showOpenDialog(null);
-        System.out.println(file.toString());
-        String excelFilePath = file.toString();
+        String excelFilePath = file.getAbsolutePath();
         System.out.println(excelFilePath);
         if (excelFilePath.isEmpty()) {
             System.out.println("No File Found");
@@ -102,255 +92,103 @@ public class HomeController implements Initializable {
         }
         System.out.print("Almost before...");
 
+
         // SQL statement for creating a new table
-        String createSql = "CREATE TABLE IF NOT EXISTS employee_acc_one (" +
+        String createSql = "CREATE TABLE IF NOT EXISTS employees_acc (" +
                 "ID INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT, SAP_Personalnummer INTEGER NOT NULL, " +
-                "Spalte1 TEXT,Vorname TEXT NOT NULL,Nachname TEXT NOT NULL,RI TEXT, Verfugbarkeit TEXT, " +
+                "Spalte1 TEXT,Vorname TEXT NOT NULL,Nachname TEXT NOT NULL,RI TEXT, Verfugbarkeit DATE, " +
                 "Berufserfahrung TEXT, ANU TEXT, Mobilitat TEXT,Kompetenzen TEXT, Tools TEXT, Sprachen TEXT, " +
                 "RT TEXT, Aktionen TEXT, Projektwunsch TEXT,Schwerpunkt TEXT, Division TEXT, Einheit TEXT, " +
                 "Position_RI TEXT, Manager1 TEXT, Manager2 TEXT)";
 
         try {
-            Statement stmt = conn.createStatement();
+            Statement stmtCreate = conn.createStatement();
             // create a new table
-            stmt.execute(createSql);
-            conn.close();
+            stmtCreate.execute(createSql);
+
+            System.out.print("Almost set...");
+            try {
+                String loadFile = "INSERT INTO employees_acc (SAP_Personalnummer, Spalte1, " +
+                        "Vorname, Nachname, RI, Verfugbarkeit, Berufserfahrung, ANU, Mobilitat, Kompetenzen, Tools, " +
+                        "Sprachen, RT, Aktionen, Projektwunsch, Schwerpunkt, Division, Einheit, Position_RI, Manager1, " +
+                        "Manager2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                pst = conn.prepareStatement(loadFile);
+                FileInputStream fileInput = new FileInputStream(new File(excelFilePath));
+
+                Workbook workbook = new XSSFWorkbook(fileInput);
+
+                Sheet sheet = workbook.getSheetAt(0);
+                Row row;
+                for (int i = 1; i < sheet.getLastRowNum(); i++) {
+                    row = sheet.getRow(i);
+
+
+
+                    DataFormatter formatter = new DataFormatter(); //creating formatter using the default locale
+//                    formatter.formatCellValue(row.getCell(0));
+                    pst.setString(1, row.getCell(0).getStringCellValue());
+                    pst.setString(2, formatter.formatCellValue(row.getCell(1)));
+                    pst.setString(3, row.getCell(2).getStringCellValue());
+                    pst.setString(4, row.getCell(3).getStringCellValue());
+                    pst.setString(5, row.getCell(4).getStringCellValue());
+                    pst.setString(6, String.valueOf(row.getCell(5).getDateCellValue()));
+                    pst.setString(7, row.getCell(6).getStringCellValue());
+                    pst.setString(8, row.getCell(7).getStringCellValue());
+                    pst.setString(9, row.getCell(8).getStringCellValue());
+                    pst.setString(10, row.getCell(9).getStringCellValue());
+                    pst.setString(11, row.getCell(10).getStringCellValue());
+                    pst.setString(12, row.getCell(11).getStringCellValue());
+                    pst.setString(13, row.getCell(12).getStringCellValue());
+                    pst.setString(14, row.getCell(13).getStringCellValue());
+                    pst.setString(15, row.getCell(14).getStringCellValue());
+                    pst.setString(16, row.getCell(15).getStringCellValue());
+                    pst.setString(17, row.getCell(16).getStringCellValue());
+                    pst.setString(18, row.getCell(17).getStringCellValue());
+                    pst.setString(19, row.getCell(18).getStringCellValue());
+                    pst.setString(20, row.getCell(19).getStringCellValue());
+                    pst.setString(21, row.getCell(20).getStringCellValue());
+                    pst.execute();
+                }
+                singleFileText.setText("Data Uploaded");
+                workbook.close();
+                fileInput.close();
+                pst.close();
+            } catch (IOException ex1) {
+                System.out.println("Error reading file");
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex1);
+                ex1.printStackTrace();
+            } catch (SQLException ex2) {
+                System.out.println("Database Error");
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex2);
+                ex2.printStackTrace();
+            }
+            System.out.println("Finally");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println("Database Created");
+        conn.close();
     }
 
     @FXML
-    public void databaseUploadOnAction(ActionEvent event) {
+    public void databaseUploadOnAction(ActionEvent event) throws SQLException {
         Connection conn = DatabaseConnection.Connector();
-        String excelFilePath = "data/Employee_Mock-Data.xlsx";
-        int batchSize = 20;
-//        uploadFileButton.setOnAction(e -> {
-        System.out.print("Almost set...");
-        try {
-            FileInputStream fileInput = new FileInputStream(new File(excelFilePath));
 
-            Workbook workbook = new XSSFWorkbook(fileInput);
+        assert conn != null;
+        conn.setAutoCommit(false);
+        // SQL STATEMENT TO DROP TABLE
+        Statement stmt = conn.createStatement();
+        String sqlCommand = "DROP TABLE IF EXISTS 'employees_acc' ";
+        System.out.println("output : " + stmt.executeUpdate(sqlCommand));
+        singleFileText.setText("Data Cleared Up");
+        stmt.close();
+        // commit after execute sql command
+        //COMMIT TRANSACTION makes all data modifications performed since
+        //the start of the transaction a permanent part of the database,
+        conn.commit();
+        conn.close();
 
-            Sheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = sheet.iterator();
-            assert conn != null;
-            conn.setAutoCommit(false);
-
-
-
-//            String createSQL = "CREATE TABLE employee_acc (
-//            ID INTEGER NOT NULL UNIQUE,
-//                    SAP_Personalnummer INTEGER NOT NULL UNIQUE,
-//            Spalte1 TEXT,
-//            Vorname TEXT NOT NULL,
-//            Nachname TEXT NOT NULL,
-//            RI TEXT,
-//            Verfugbarkeit TEXT,
-//            Berufserfahrung TEXT,
-//            ANU TEXT,
-//            Mobilitat TEXT,
-//            Kompetenzen TEXT,
-//            Tools TEXT,
-//            Sprachen TEXT,
-//            RT TEXT,
-//            Aktionen TEXT,
-//            Projektwunsch TEXT,
-//            Schwerpunkt TEXT,
-//            Division TEXT,
-//            Einheit TEXT,
-//            Position_RI TEXT,
-//            Manager1 TEXT,
-//            Manager2 TEXT,
-//            PRIMARY KEY (ID AUTOINCREMENT)
-//            )"
-//            PreparedStatement pst = conn.prepareStatement(createSQL);
-
-            String loadFile = "INSERT INTO employee_acc_one(SAP_Personalnummer, Spalte1, " +
-                    "Vorname, Nachname, RI, Verfugbarkeit, Berufserfahrung, ANU, Mobilitat, Kompetenzen, Tools, " +
-                    "Sprachen, RT, Aktionen, Projektwunsch, Schwerpunkt, Division, Einheit, Position_RI, Manager1, " +
-                    "Manager2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement pst = conn.prepareStatement(loadFile);
-
-            int count = 0;
-
-            rowIterator.next();
-
-            while (rowIterator.hasNext()) {
-                Row nextRow = rowIterator.next();
-                Iterator<Cell> cellIterator = nextRow.cellIterator();
-
-                while (cellIterator.hasNext()) {
-                    Cell nextCell = cellIterator.next();
-
-                    int columnIndex = nextCell.getColumnIndex();
-
-                    switch (columnIndex) {
-                        case 0:
-                            int SAP_Personalnummer = (int) nextCell.getNumericCellValue();
-                            pst.setInt(1, SAP_Personalnummer);
-                            break;
-                        case 1:
-                            String Spalte1 = nextCell.getStringCellValue();
-                            pst.setString(2, Spalte1);
-                            break;
-                        case 2:
-                            String Vorname = nextCell.getStringCellValue();
-                            pst.setString(3, Vorname);
-                            break;
-                        case 3:
-                            String Nachname = nextCell.getStringCellValue();
-                            pst.setString(4, Nachname);
-                            break;
-                        case 4:
-                            String RI = nextCell.getStringCellValue();
-                            pst.setString(5, RI);
-                            break;
-                        case 5:
-                            String Verfugbarkeit = nextCell.getStringCellValue();
-                            pst.setString(6, Verfugbarkeit);
-                            break;
-                        case 6:
-                            String Berufserfahrung = nextCell.getStringCellValue();
-                            pst.setString(7, Berufserfahrung);
-                            break;
-                        case 7:
-                            String ANU = nextCell.getStringCellValue();
-                            pst.setString(8, ANU);
-                            break;
-                        case 8:
-                            String Mobilitat = nextCell.getStringCellValue();
-                            pst.setString(9, Mobilitat);
-                            break;
-                        case 9:
-                            String Kompetenzen = nextCell.getStringCellValue();
-                            pst.setString(10, Kompetenzen);
-                            break;
-                        case 10:
-                            String Tools = nextCell.getStringCellValue();
-                            pst.setString(11, Tools);
-                            break;
-                        case 11:
-                            String Sprachen = nextCell.getStringCellValue();
-                            pst.setString(12, Sprachen);
-                            break;
-                        case 12:
-                            String RT = nextCell.getStringCellValue();
-                            pst.setString(13, RT);
-                            break;
-                        case 13:
-                            String Aktionen = nextCell.getStringCellValue();
-                            pst.setString(14, Aktionen);
-                            break;
-                        case 14:
-                            String Projektwunsch = nextCell.getStringCellValue();
-                            pst.setString(15, Projektwunsch);
-                            break;
-                        case 15:
-                            String Schwerpunkt = nextCell.getStringCellValue();
-                            pst.setString(16, Schwerpunkt);
-                            break;
-                        case 16:
-                            String Division = nextCell.getStringCellValue();
-                            pst.setString(17, Division);
-                            break;
-                        case 17:
-                            String Einheit = nextCell.getStringCellValue();
-                            pst.setString(18, Einheit);
-                            break;
-                        case 18:
-                            String Position_RI = nextCell.getStringCellValue();
-                            pst.setString(19, Position_RI);
-                            break;
-                        case 19:
-                            String Manager1 = nextCell.getStringCellValue();
-                            pst.setString(20, Manager1);
-                            break;
-                        case 20:
-                            String Manager2 = nextCell.getStringCellValue();
-                            pst.setString(21, Manager2);
-                            break;
-                    }
-                }
-                pst.addBatch();
-
-                pst.execute();
-            }
-
-            workbook.close();
-
-            // execute remaining queries
-            pst.executeBatch();
-
-            conn.commit();
-            conn.close();
-
-
-//            System.out.print("Almost workbook...");
-//
-//            Row row;
-//
-//            // read rows from Excel sheet and add it to database
-//            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-//                row = sheet.getRow(i);
-//                System.out.print("Almost...");
-//                assert false;
-//                pst.setInt(1, (int) row.getCell(0).getNumericCellValue());
-//                pst.setString(2, row.getCell(1).getStringCellValue());
-//                pst.setString(3, row.getCell(2).getStringCellValue());
-//                pst.setString(4, row.getCell(3).getStringCellValue());
-//                pst.setString(5, row.getCell(4).getStringCellValue());
-//                pst.setString(6, row.getCell(5).getStringCellValue());
-//                pst.setString(7, row.getCell(6).getStringCellValue());
-//                pst.setString(8, row.getCell(7).getStringCellValue());
-//                pst.setString(9, row.getCell(8).getStringCellValue());
-//                pst.setString(10, row.getCell(9).getStringCellValue());
-//                System.out.print("Almost...");
-//                pst.setString(11, row.getCell(10).getStringCellValue());
-//                pst.setString(12, row.getCell(11).getStringCellValue());
-//                pst.setString(13, row.getCell(12).getStringCellValue());
-//                pst.setString(14, row.getCell(13).getStringCellValue());
-//                pst.setString(15, row.getCell(14).getStringCellValue());
-//                pst.setString(16, row.getCell(15).getStringCellValue());
-//                pst.setString(17, row.getCell(16).getStringCellValue());
-//                pst.setString(18, row.getCell(17).getStringCellValue());
-//                pst.setString(19, row.getCell(18).getStringCellValue());
-//                pst.setString(20, row.getCell(19).getStringCellValue());
-//                pst.setString(21, row.getCell(20).getStringCellValue());
-//                System.out.print("Almost exec...");
-//                pst.execute();
-//                System.out.print("Almost execute...");
-//            }
-//
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Information Dialog");
-//            alert.setHeaderText(null);
-//            System.out.print("Almost alert...");
-//            alert.setContentText("Employee Details Imported from Excel Sheet to Database.");
-//            alert.showAndWait();
-//            System.out.print("Almost alerted...");
-//
-//            workbook.close();
-//            fileInput.close();
-//            assert false;
-//            pst.close();
-
-
-        } catch (IOException ex1) {
-            System.out.println("Error reading file");
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex1);
-            ex1.printStackTrace();
-        } catch (SQLException ex2) {
-            System.out.println("Database Error");
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex2);
-            ex2.printStackTrace();
-        }
-//
-//        }
-//        );
-        System.out.println("Finally");
     }
 
     public void employeesFormStage() {
@@ -368,18 +206,4 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void fileFormStage() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employees.fxml"));
-            Stage employeeStage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), 1500, 800);
-            employeeStage.setTitle("Employees");
-            employeeStage.setScene(scene);
-            employeeStage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
 }

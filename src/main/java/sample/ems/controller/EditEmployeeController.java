@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 
 
 public class EditEmployeeController implements Initializable {
-    EmployeesData newEmployee = new EmployeesData("1000", "200220", "", "Jack", "Jones", "test", "2020-11-12", "test", "test",
-            "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test");
+//    EmployeesData newEmployee = new EmployeesData("1000", "200220", "", "Jack", "Jones", "test", "2020-11-12", "test", "test",
+//            "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test");
 
     @FXML
     private ImageView addEmpImageView;
@@ -113,13 +113,13 @@ public class EditEmployeeController implements Initializable {
 
     public void passEmployees(EmployeesData selectedEmployee) {
         // Local static employee object will be used in our pass employee method
-        idTextField.setText(selectedEmployee.getID());
-        sapTextField.setText(selectedEmployee.getSAP_Personalnummer());
+        idTextField.setText(String.valueOf(selectedEmployee.getID()));
+        sapTextField.setText(String.valueOf(selectedEmployee.getSAP_Personalnummer()));
         spalteTextField.setText(selectedEmployee.getSpalte1());
         vornameTextField.setText(selectedEmployee.getVorname());
         nachnameTextField.setText(selectedEmployee.getNachname());
         riTextField.setText(selectedEmployee.getRI());
-        verfugbarkeitTextField.setText(selectedEmployee.getVerfugbarkeit());
+        verfugbarkeitTextField.setText(String.valueOf(selectedEmployee.getVerfugbarkeit()));
         berufserfahrungTextField.setText(selectedEmployee.getBerufserfahrung());
         anuTextField.setText(selectedEmployee.getANU());
         mobilitatTextField.setText(selectedEmployee.getMobilitat());
