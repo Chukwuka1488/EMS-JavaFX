@@ -6,11 +6,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ems.controller.EmployeesController">
+
+<FlowPane prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ems.controller.EmployeesController">
    <children>
       <Pane prefHeight="800.0" prefWidth="1500.0">
          <children>
@@ -19,34 +20,48 @@
                   <Button fx:id="backEmployeesButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backEmployeesButtonOnAction" prefHeight="30.0" prefWidth="30.0" stylesheets="@styleEmp.css" textFill="WHITE">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" glyphName="ARROW_CIRCLE_LEFT" size="2em" />
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
                   <Label layoutX="118.0" layoutY="43.0" text="Search" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Tahoma" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="keywordTextField" layoutX="171.0" layoutY="40.0" prefHeight="25.0" prefWidth="400.0" promptText="Keywords..." />
+                  <TextField fx:id="keywordTextField" layoutX="171.0" layoutY="40.0" prefHeight="25.0" prefWidth="400.0" promptText="Keywords...">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
             <Button fx:id="addEmployeeButton" contentDisplay="TOP" layoutX="61.0" layoutY="118.0" mnemonicParsing="false" onAction="#addEmployeeButtonOnAction" prefHeight="50.0" prefWidth="100.0" stylesheets="@styleEmp.css" text="Add Employee" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.5em" />
                </graphic>
+               <font>
+                  <Font name="Tahoma" size="13.0" />
+               </font>
             </Button>
             <Button fx:id="importButton" contentDisplay="TOP" layoutX="698.0" layoutY="118.0" mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="50.0" prefWidth="109.0" stylesheets="@styleEmp.css" text="Import /Refresh" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="CLOUD_UPLOAD" size="1.5em" />
                </graphic>
+               <font>
+                  <Font name="Tahoma" size="13.0" />
+               </font>
             </Button>
             <Button fx:id="exportButton" contentDisplay="TOP" layoutX="838.0" layoutY="118.0" mnemonicParsing="false" onAction="#exportButtonOnAction" prefHeight="50.0" prefWidth="70.0" stylesheets="@styleEmp.css" text="Export " textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="CLOUD_DOWNLOAD" size="1.5em" />
                </graphic>
+               <font>
+                  <Font name="Tahoma" size="13.0" />
+               </font>
             </Button>
-            <TableView fx:id="employeeTableView" layoutX="48.0" layoutY="190.0" prefHeight="550.0" prefWidth="1300.0">
+            <TableView fx:id="employeeTableView" layoutX="48.0" layoutY="190.0" prefHeight="550.0" prefWidth="1300.0" stylesheets="@styleEmp.css">
               <columns>
-                  <TableColumn fx:id="idTableColumn" prefWidth="48.0" text="ID" />
-                <TableColumn fx:id="sapTableColumn" prefWidth="68.0" text="SAP_Personalnummer" />
+                  <TableColumn fx:id="idTableColumn" prefWidth="51.0" text="ID" />
+                <TableColumn fx:id="sapTableColumn" minWidth="4.0" prefWidth="65.0" text="SAP_Personalnummer" />
                 <TableColumn fx:id="spalte1TableColumn" minWidth="0.0" prefWidth="68.0" text="Spalte1" />
                   <TableColumn fx:id="vornameTableColumn" prefWidth="47.0" text="Vorname" />
                   <TableColumn fx:id="nachnameTableColumn" prefWidth="46.0" text="Nachname" />
@@ -73,13 +88,19 @@
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="1.5em" />
                </graphic>
+               <font>
+                  <Font name="Tahoma" size="13.0" />
+               </font>
             </Button>
-            <Button fx:id="deleteEmployeeButton" contentDisplay="TOP" layoutX="354.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteEmployeeButtonOnAction" prefHeight="50.0" prefWidth="109.0" stylesheets="@styleEmp.css" text="Delete Employee" textFill="WHITE">
+            <Button fx:id="deleteEmployeeButton" contentDisplay="TOP" layoutX="354.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteEmployeeButtonOnAction" prefHeight="50.0" prefWidth="123.0" stylesheets="@styleEmp.css" text="Delete Employee" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="TRASH" size="1.5em" />
                </graphic>
+               <font>
+                  <Font name="Tahoma" size="13.0" />
+               </font>
             </Button>
          </children>
       </Pane>
    </children>
-</AnchorPane>
+</FlowPane>

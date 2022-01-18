@@ -31,54 +31,183 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="25.0" layoutY="194.0" text="Spalte1 :" />
-      <TextField fx:id="spalteTextField" layoutX="128.0" layoutY="186.0" prefHeight="30.0" prefWidth="250.0" promptText="Spalte1" />
-      <Label layoutX="25.0" layoutY="279.0" text="Nachname :" />
-      <TextField fx:id="nachnameTextField" layoutX="128.0" layoutY="271.0" prefHeight="30.0" prefWidth="250.0" promptText="Nachname" />
-      <Label layoutX="25.0" layoutY="321.0" text="RI :  " />
-      <Label layoutX="25.0" layoutY="237.0" text="Vorname :" />
-      <TextField fx:id="vornameTextField" layoutX="128.0" layoutY="229.0" prefHeight="30.0" prefWidth="250.0" promptText="Vorname" />
-      <Label layoutX="25.0" layoutY="365.0" text="Verfugbarkeit :" />
-      <Button fx:id="submitButton" layoutX="251.0" layoutY="646.0" mnemonicParsing="false" onAction="#submitButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Submit" textFill="WHITE" />
-      <Button fx:id="clearButton" layoutX="465.0" layoutY="646.0" mnemonicParsing="false" onAction="#clearButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Clear" textFill="WHITE" />
+      <Label layoutX="25.0" layoutY="194.0" text="Spalte1 :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="spalteTextField" layoutX="128.0" layoutY="186.0" prefHeight="30.0" prefWidth="250.0" promptText="Spalte1">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="25.0" layoutY="279.0" text="Nachname :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="nachnameTextField" layoutX="128.0" layoutY="271.0" prefHeight="30.0" prefWidth="250.0" promptText="Nachname">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="25.0" layoutY="321.0" text="RI :  ">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="25.0" layoutY="237.0" text="Vorname :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="vornameTextField" layoutX="128.0" layoutY="229.0" prefHeight="30.0" prefWidth="250.0" promptText="Vorname">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="25.0" layoutY="365.0" text="Verfugbarkeit :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Button fx:id="submitButton" layoutX="251.0" layoutY="646.0" mnemonicParsing="false" onAction="#submitButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Submit" textFill="WHITE">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Button>
+      <Button fx:id="clearButton" layoutX="465.0" layoutY="646.0" mnemonicParsing="false" onAction="#clearButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Button>
       <Label fx:id="addEmpMessageLabel" layoutX="181.0" layoutY="108.0" prefHeight="17.0" prefWidth="459.0" textFill="#119740">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Label layoutX="24.0" layoutY="412.0" text="Berufserfahrung :" />
-      <TextField fx:id="berufserfahrungTextField" layoutX="127.0" layoutY="404.0" prefHeight="30.0" prefWidth="250.0" promptText="Berufserfahrung" />
-      <Label layoutX="24.0" layoutY="497.0" text="Mobilitat :" />
-      <TextField fx:id="mobilitatTextField" layoutX="127.0" layoutY="489.0" prefHeight="30.0" prefWidth="250.0" promptText="Mobilitat" />
-      <Label layoutX="24.0" layoutY="539.0" text="Kompetenzen :" />
-      <Label layoutX="24.0" layoutY="455.0" text="ANU :" />
-      <TextField fx:id="anuTextField" layoutX="127.0" layoutY="447.0" prefHeight="30.0" prefWidth="250.0" promptText="ANU" />
-      <Label layoutX="24.0" layoutY="583.0" text="Tools :" />
-      <Label layoutX="422.0" layoutY="194.0" text="Sprachen :" />
-      <TextField fx:id="sprachenTextField" layoutX="525.0" layoutY="186.0" prefHeight="30.0" prefWidth="250.0" promptText="Sprachen" />
-      <Label layoutX="422.0" layoutY="279.0" text="Aktionen :" />
-      <TextField fx:id="aktionenTextField" layoutX="525.0" layoutY="271.0" prefHeight="30.0" prefWidth="250.0" promptText="Aktionen" />
-      <Label layoutX="426.0" layoutY="365.0" text="Schwerpunkt :" />
-      <Label layoutX="422.0" layoutY="237.0" text="RT :" />
-      <TextField fx:id="rtTextField" layoutX="525.0" layoutY="229.0" prefHeight="30.0" prefWidth="250.0" promptText="RT" />
-      <Label layoutX="422.0" layoutY="322.0" text="Projektwunsch :" />
-      <Label layoutX="421.0" layoutY="412.0" text="Division :" />
-      <TextField fx:id="divisionTextField" layoutX="524.0" layoutY="404.0" prefHeight="30.0" prefWidth="250.0" promptText="Division" />
-      <Label layoutX="421.0" layoutY="497.0" text="Position_RI :" />
-      <TextField fx:id="manager1TextField" layoutX="525.0" layoutY="533.0" prefHeight="30.0" prefWidth="250.0" promptText="Manager  1" />
-      <Label layoutX="421.0" layoutY="539.0" text="Manager1 :" />
-      <Label layoutX="421.0" layoutY="455.0" text="Einheit :" />
-      <TextField fx:id="einheitTextField" layoutX="524.0" layoutY="447.0" prefHeight="30.0" prefWidth="250.0" promptText="Einheit" />
-      <Label layoutX="421.0" layoutY="583.0" text="Manager2 :" />
-      <Label layoutX="233.0" layoutY="139.0" text="SAP_Personalnummer :" />
-      <TextField fx:id="sapTextField" layoutX="374.0" layoutY="133.0" prefHeight="30.0" prefWidth="214.0" promptText="SAP_Personalnummer" />
-      <TextField fx:id="riTextField" layoutX="127.0" layoutY="314.0" prefHeight="30.0" prefWidth="250.0" promptText="RI" />
-      <TextField fx:id="kompetenzenTextField" layoutX="128.0" layoutY="533.0" prefHeight="30.0" prefWidth="250.0" promptText="Kompetenzen" />
-      <TextField fx:id="toolsTextField" layoutX="128.0" layoutY="576.0" prefHeight="30.0" prefWidth="250.0" promptText="Tools" />
-      <TextField fx:id="projektwunschTextField" layoutX="524.0" layoutY="316.0" prefHeight="30.0" prefWidth="250.0" promptText="Projektwunsch" />
-      <TextField fx:id="schwerpunktTextField" layoutX="525.0" layoutY="359.0" prefHeight="30.0" prefWidth="250.0" promptText="Schwerpunkt" />
-      <TextField fx:id="manager2TextField" layoutX="525.0" layoutY="577.0" prefHeight="30.0" prefWidth="250.0" promptText="Manager 2" />
-      <TextField fx:id="positionriTextField" layoutX="525.0" layoutY="491.0" prefHeight="30.0" prefWidth="250.0" promptText="Position_RI" />
-      <DatePicker fx:id="verfugbarkeitTextField" layoutX="127.0" layoutY="359.0" prefHeight="30.0" prefWidth="250.0" promptText="01/01/1900" />
+      <Label layoutX="24.0" layoutY="412.0" text="Berufserfahrung :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="berufserfahrungTextField" layoutX="127.0" layoutY="404.0" prefHeight="30.0" prefWidth="250.0" promptText="Berufserfahrung">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="24.0" layoutY="497.0" text="Mobilitat :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="mobilitatTextField" layoutX="127.0" layoutY="489.0" prefHeight="30.0" prefWidth="250.0" promptText="Mobilitat">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="24.0" layoutY="539.0" text="Kompetenzen :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="24.0" layoutY="455.0" text="ANU :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="anuTextField" layoutX="127.0" layoutY="447.0" prefHeight="30.0" prefWidth="250.0" promptText="ANU">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="24.0" layoutY="583.0" text="Tools :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="422.0" layoutY="194.0" text="Sprachen :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="sprachenTextField" layoutX="525.0" layoutY="186.0" prefHeight="30.0" prefWidth="250.0" promptText="Sprachen">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="422.0" layoutY="279.0" text="Aktionen :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="aktionenTextField" layoutX="525.0" layoutY="271.0" prefHeight="30.0" prefWidth="250.0" promptText="Aktionen">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="426.0" layoutY="365.0" text="Schwerpunkt :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="422.0" layoutY="237.0" text="RT :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="rtTextField" layoutX="525.0" layoutY="229.0" prefHeight="30.0" prefWidth="250.0" promptText="RT">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="422.0" layoutY="322.0" text="Projektwunsch :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="421.0" layoutY="412.0" text="Division :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="divisionTextField" layoutX="524.0" layoutY="404.0" prefHeight="30.0" prefWidth="250.0" promptText="Division">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="421.0" layoutY="497.0" text="Position_RI :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="manager1TextField" layoutX="525.0" layoutY="533.0" prefHeight="30.0" prefWidth="250.0" promptText="Manager  1">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="421.0" layoutY="539.0" text="Manager1 :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="421.0" layoutY="455.0" text="Einheit :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="einheitTextField" layoutX="524.0" layoutY="447.0" prefHeight="30.0" prefWidth="250.0" promptText="Einheit">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <Label layoutX="421.0" layoutY="583.0" text="Manager2 :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <Label layoutX="233.0" layoutY="139.0" text="SAP_Personalnummer :">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></Label>
+      <TextField fx:id="sapTextField" layoutX="374.0" layoutY="133.0" prefHeight="30.0" prefWidth="214.0" promptText="SAP_Personalnummer">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="riTextField" layoutX="127.0" layoutY="314.0" prefHeight="30.0" prefWidth="250.0" promptText="RI">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="kompetenzenTextField" layoutX="128.0" layoutY="533.0" prefHeight="30.0" prefWidth="250.0" promptText="Kompetenzen">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="toolsTextField" layoutX="128.0" layoutY="576.0" prefHeight="30.0" prefWidth="250.0" promptText="Tools">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="projektwunschTextField" layoutX="524.0" layoutY="316.0" prefHeight="30.0" prefWidth="250.0" promptText="Projektwunsch">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="schwerpunktTextField" layoutX="525.0" layoutY="359.0" prefHeight="30.0" prefWidth="250.0" promptText="Schwerpunkt">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="manager2TextField" layoutX="525.0" layoutY="577.0" prefHeight="30.0" prefWidth="250.0" promptText="Manager 2">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="positionriTextField" layoutX="525.0" layoutY="491.0" prefHeight="30.0" prefWidth="250.0" promptText="Position_RI">
+         <font>
+            <Font name="Tahoma" size="13.0" />
+         </font></TextField>
+      <DatePicker fx:id="verfugbarkeitTextField" layoutX="127.0" layoutY="359.0" prefHeight="30.0" prefWidth="250.0" promptText="01/01/1900" styleClass="date-picker" stylesheets="@styleEmp.css" />
    </children>
 </AnchorPane>

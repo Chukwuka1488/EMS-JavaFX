@@ -11,6 +11,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.ems.model.LoginModel;
 import sample.ems.Main;
@@ -94,6 +98,9 @@ public class LoginController implements Initializable {
     public void createAccountFormStage() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("register.fxml"));
+            Text text = new Text();
+            //Setting font to the text
+            text.setFont(Font.font("tahoma", FontWeight.NORMAL, FontPosture.REGULAR, 13));
             Stage registerStage = new Stage();
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             registerStage.setTitle("Register");
@@ -109,6 +116,9 @@ public class LoginController implements Initializable {
     public void homeFormStage() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home.fxml"));
+            Text text = new Text();
+            //Setting font to the text
+            text.setFont(Font.font("tahoma", FontWeight.NORMAL, FontPosture.REGULAR, 13));
             Stage homeStage = new Stage();
             Scene scene = new Scene(fxmlLoader.load(), 800, 580);
             homeStage.setTitle("Employee Management System");

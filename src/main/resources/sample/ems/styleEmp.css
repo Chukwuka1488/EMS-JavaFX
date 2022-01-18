@@ -2,6 +2,8 @@
     -fx-background-color: #5778D0;
     -fx-background-radius: 0em;
     -fx-border-width: 1px;
+    -fx-font-family: Tahoma, Verdana, Arial, sans-serif;
+    -fx-font-size: 13px;
     /*-fx-border-color: white;*/
 }
 
@@ -29,12 +31,16 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-alignment: CENTER_LEFT;
+    -fx-font-family: Tahoma, Verdana, Arial, sans-serif;
+    -fx-font-size: 13px;
 }
 
 .table-view .cell {
     -fx-cell-size: 30;
     -fx-alignment: center-left;
     -fx-text-fill: #000000;
+    -fx-font-family: Tahoma, Verdana, Arial, sans-serif;
+    -fx-font-size: 13px;
     /*-fx-alignment: CENTER_LEFT;*/
 }
 
@@ -58,7 +64,7 @@
 .table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track {
     -fx-background-color: transparent;
-    -fx-border-color: derive(#f4a261, 80%);
+    -fx-border-color: derive(#b3541e, 80%);
     -fx-background-radius: 2em;
     -fx-border-radius: 2em;
 }
@@ -66,9 +72,14 @@
 /* The main scroll bar *thumb* CSS class which we drag everytime (movable) */
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
-    -fx-background-color: derive(#f4a261, 90%);
+    -fx-background-color: derive(#b3541e, 90%);
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
+}
+
+.date-picker{
+    -fx-font-family: Tahoma, Verdana, Arial, sans-serif;
+    -fx-font-size: 13px;
 }
 
 /* chart properties */
