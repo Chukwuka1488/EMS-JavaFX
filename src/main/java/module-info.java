@@ -3,13 +3,11 @@ module sample.ems {
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.sql;
-    requires mysql.connector.java;
+//    requires mysql.connector.java;
     requires org.xerial.sqlitejdbc;
     requires java.desktop;
     requires org.apache.poi.ooxml;
 
-
-//    requires mysql.connector.java;
 
 
     opens sample.ems to javafx.fxml;

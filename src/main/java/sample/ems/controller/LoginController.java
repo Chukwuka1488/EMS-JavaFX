@@ -116,6 +116,7 @@ public class LoginController implements Initializable {
             homeStage.show();
 
         } catch (Exception e) {
+
             e.printStackTrace();
             e.getCause();
         }
