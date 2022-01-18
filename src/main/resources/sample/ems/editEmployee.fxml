@@ -16,7 +16,7 @@
          <children>
             <ImageView fx:id="addEmpImageView" fitHeight="45.0" fitWidth="70.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../images/lock.png" />
+                  <Image url="@../../images/lock.png" />
                </image>
             </ImageView>
             <Label layoutX="85.0" layoutY="34.0" text="Edit Employee" textFill="WHITE">

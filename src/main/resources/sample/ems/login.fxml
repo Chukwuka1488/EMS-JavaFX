@@ -18,7 +18,7 @@
          <children>
             <ImageView fx:id="managementImageView" fitHeight="467.0" fitWidth="268.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../images/management2.jpeg" />
+                  <Image url="@../../images/management2.jpeg" />
                </image>
             </ImageView>
          </children>
@@ -29,7 +29,7 @@
          <children>
             <ImageView fx:id="lockImageView" fitHeight="42.0" fitWidth="39.0" layoutX="154.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../images/lock.png" />
+                  <Image url="@../../images/lock.png" />
                </image>
             </ImageView>
             <Label layoutX="14.0" layoutY="132.0" text="Username">
