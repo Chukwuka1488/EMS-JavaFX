@@ -11,88 +11,91 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="580.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ems.controller.HomeController">
-   <children>
-      <Pane prefHeight="162.0" prefWidth="800.0" style="-fx-background-color: #2a62fe;" styleClass="button" stylesheets="@style.css">
-         <children>
-            <Button fx:id="quitButtonHomePage" contentDisplay="TOP" layoutX="752.0" layoutY="14.0" mnemonicParsing="false" onAction="#quitButtonHomePageOnAction" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: #2a62fe;">
-               <graphic>
-                  <FontAwesomeIcon fill="WHITE" glyphName="POWER_OFF" onMouseClicked="#quitButtonHomePageOnAction" size="1.5em" />
-               </graphic></Button>
-            <Label layoutX="80.0" layoutY="24.0" text="ALTEN GmbH" textFill="WHITE">
-               <font>
-                  <Font name="Gill Sans" size="33.0" />
-               </font>
-            </Label>
-            <Label layoutX="80.0" layoutY="68.0" text="Employee Management System" textFill="WHITE">
-               <font>
-                  <Font name="Geeza Pro Regular" size="18.0" />
-               </font>
-            </Label>
-         </children></Pane>
-      <GridPane hgap="10.0" layoutX="127.0" layoutY="214.0" prefHeight="280.0" prefWidth="532.0" vgap="10.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Home" textFill="#2a62fe">
-               <font>
-                  <Font name="Andale Mono" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="HOME" size="5em" />
-               </graphic>
-            </Button>
-            <Button fx:id="employeesButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#employeesButtonOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Employees" textFill="#2a62fe" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Andale Mono" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="USERS" size="5em" />
-               </graphic>
-            </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Automotive" textFill="#2a62fe" GridPane.columnIndex="2">
-               <font>
-                  <Font name="Andale Mono" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="CAR" size="5em" />
-               </graphic>
-            </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Aerospace" textFill="#2a62fe" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Andale Mono" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="PLANE" size="5em" />
-               </graphic>
-            </Button>
-            <Button fx:id="uploadFileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#uploadFileButtonOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Upload" textFill="#2a62fe" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Andale Mono" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="UPLOAD" size="5em" />
-               </graphic>
-            </Button>
-            <Button fx:id="databaseUpload" contentDisplay="TOP" mnemonicParsing="false" onAction="#databaseUploadOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Settings" textFill="#2a62fe" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Andale Mono" size="14.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIcon fill="#2a62fe" glyphName="COG" size="5em" />
-               </graphic>
-            </Button>
-         </children>
-      </GridPane>
-      <Label fx:id="singleFileText" layoutX="314.0" layoutY="526.0" prefHeight="17.0" prefWidth="171.0" textFill="#187c56">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Label>
-   </children>
+    <children>
+        <Pane prefHeight="162.0" prefWidth="800.0" style="-fx-background-color: #2a62fe;" styleClass="button" stylesheets="@style.css">
+            <children>
+                <Button fx:id="quitButtonHomePage" contentDisplay="TOP" layoutX="752.0" layoutY="14.0" mnemonicParsing="false" onAction="#quitButtonHomePageOnAction" prefHeight="39.0" prefWidth="34.0" style="-fx-background-color: #2a62fe;">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="POWER_OFF" onMouseClicked="#quitButtonHomePageOnAction" size="1.5em" />
+                    </graphic>
+                </Button>
+                <Label layoutX="80.0" layoutY="24.0" text="ALTEN GmbH" textFill="WHITE">
+                    <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="33.0" />
+                    </font>
+                </Label>
+                <Label layoutX="80.0" layoutY="68.0" text="Employee Management System" textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <GridPane hgap="10.0" layoutX="127.0" layoutY="214.0" prefHeight="280.0" prefWidth="532.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Home" textFill="#2a62fe">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon fill="#2a62fe" glyphName="HOME" size="5em" />
+                    </graphic>
+                </Button>
+                <Button fx:id="employeesButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#employeesButtonOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Employees" textFill="#2a62fe" GridPane.columnIndex="1">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon fill="#2a62fe" glyphName="USERS" size="5em" />
+                    </graphic>
+                </Button>
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Automotive" textFill="#2a62fe" GridPane.columnIndex="2">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon fill="#2a62fe" glyphName="CAR" size="5em" />
+                    </graphic>
+                </Button>
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Aerospace" textFill="#2a62fe" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon fill="#2a62fe" glyphName="PLANE" size="5em" />
+                    </graphic>
+                </Button>
+                <Button fx:id="uploadFileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#uploadFileButtonOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Upload" textFill="#2a62fe" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon fill="#2a62fe" glyphName="UPLOAD" size="5em" />
+                    </graphic>
+                </Button>
+                <Button fx:id="databaseUpload" contentDisplay="TOP" mnemonicParsing="false" onAction="#databaseUploadOnAction" prefHeight="155.0" prefWidth="178.0" stylesheets="@style.css" text="Reset" textFill="#2a62fe" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="Gill Sans MT Bold" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon fill="#2a62fe" glyphName="COG" size="5em" />
+                    </graphic>
+                </Button>
+            </children>
+        </GridPane>
+        <Label fx:id="singleFileText" layoutX="314.0" layoutY="526.0" prefHeight="17.0" prefWidth="171.0" textFill="#187c56">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

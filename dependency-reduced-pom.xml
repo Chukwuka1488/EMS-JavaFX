@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>sample</groupId>
+  <groupId>sample.ems</groupId>
   <artifactId>EMS</artifactId>
   <name>EMS</name>
   <version>1.0-SNAPSHOT</version>
@@ -43,8 +43,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>17</source>
+          <target>17</target>
         </configuration>
       </plugin>
       <plugin>
@@ -63,7 +63,7 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>sample.ems/sample.ems.Main</mainClass>
+              <mainClass>sample.ems.ems/sample.ems.Main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
@@ -80,7 +80,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.8.2</version>
+      <version>5.8.1</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -100,7 +100,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.8.2</version>
+      <version>5.8.1</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
@@ -116,6 +116,6 @@
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>5.8.2</junit.version>
+    <junit.version>5.8.1</junit.version>
   </properties>
 </project>

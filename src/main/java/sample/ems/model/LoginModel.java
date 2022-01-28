@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginModel {
     Connection connection;
@@ -19,8 +22,8 @@ public class LoginModel {
         try {
             return !connection.isClosed();
         } catch (SQLException e) {
-            e.printStackTrace();
-            e.getCause();
+            Logger.getAnonymousLogger()
+                    .log(Level.SEVERE, LocalDateTime.now() + ": Could not start SQL Drivers");
             return false;
         }
     }

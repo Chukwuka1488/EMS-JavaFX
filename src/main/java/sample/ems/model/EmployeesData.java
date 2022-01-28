@@ -1,4 +1,5 @@
 package sample.ems.model;
+
 import javafx.beans.property.*;
 
 

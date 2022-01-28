@@ -1,5 +1,7 @@
 package sample.ems.controller;
 
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -188,11 +190,36 @@ public class HomeController implements Initializable {
 
     }
 
+    int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
+    int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+
+    int initialX;
+    int initialY;
+
     public void employeesFormStage() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employees.fxml"));
+
+            Rectangle2D employeeRect = Screen.getPrimary().getVisualBounds();
+            System.out.println(employeeRect);
+
+            // Responsive Design
+            int sceneWidth = 0;
+            int sceneHeight = 0;
+
+            if (screenWidth <= 800 && screenHeight <= 600) {
+                sceneWidth = 600;
+                sceneHeight = 350;
+            } else if (screenWidth <= 1280 && screenHeight <= 720) {
+                sceneWidth = 1200;
+                sceneHeight = 600;
+            } else if (screenWidth <= 1920 && screenHeight <= 1080) {
+                sceneWidth = 1500;
+                sceneHeight = 800;
+            }
+
             Stage employeeStage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), 1500, 800);
+            Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
             employeeStage.setTitle("Employees");
             employeeStage.setScene(scene);
             employeeStage.show();

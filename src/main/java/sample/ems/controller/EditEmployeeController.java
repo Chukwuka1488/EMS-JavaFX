@@ -115,6 +115,7 @@ public class EditEmployeeController implements Initializable {
     public void passEmployees(EmployeesData selectedEmployee) {
 
         // Local static employee object will be used in our pass employee method
+        idTextField.setText(String.valueOf(selectedEmployee.getID()));
         sapTextField.setText(String.valueOf(selectedEmployee.getSAP_Personalnummer()));
         spalteTextField.setText(selectedEmployee.getSpalte1());
         vornameTextField.setText(selectedEmployee.getVorname());

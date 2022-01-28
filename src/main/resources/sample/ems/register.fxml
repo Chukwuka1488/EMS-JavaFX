@@ -4,86 +4,86 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <!--        sample.ems.controller.RegisterController -->
 
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ems.controller.RegisterController">
-   <children>
-      <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #3366ff;">
-         <children>
-            <ImageView fx:id="registerImageView" fitHeight="45.0" fitWidth="70.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/lock.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="85.0" layoutY="34.0" text="User Registration" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Label layoutX="54.0" layoutY="131.0" styleClass="text" stylesheets="@styleEmp.css" text="First Name :">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Label>
-      <TextField fx:id="firstNameTextField" layoutX="175.0" layoutY="124.0" prefHeight="30.0" prefWidth="340.0" promptText="First Name">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></TextField>
-      <Label layoutX="54.0" layoutY="216.0" text="Username :">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Label>
-      <TextField fx:id="usernameTextField" layoutX="175.0" layoutY="209.0" prefHeight="30.0" prefWidth="340.0" promptText="Username">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></TextField>
-      <Label layoutX="54.0" layoutY="258.0" text="Password :">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Label>
-      <Label layoutX="54.0" layoutY="174.0" text="Last Name :">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Label>
-      <TextField fx:id="lastNameTextField" layoutX="175.0" layoutY="167.0" prefHeight="30.0" prefWidth="340.0" promptText="Last name">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></TextField>
-      <Label layoutX="54.0" layoutY="302.0" text="Confirm Password :">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Label>
-      <Button fx:id="registerButton" layoutX="175.0" layoutY="345.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Register" textFill="WHITE">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Button>
-      <Button fx:id="closeButton" layoutX="389.0" layoutY="345.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Close" textFill="WHITE">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></Button>
-      <PasswordField fx:id="setPasswordField" layoutX="175.0" layoutY="252.0" prefHeight="30.0" prefWidth="340.0" promptText="Password">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></PasswordField>
-      <PasswordField fx:id="confirmPasswordField" layoutX="175.0" layoutY="296.0" prefHeight="30.0" prefWidth="340.0" promptText="Password">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font></PasswordField>
-      <Label fx:id="registrationMessageLabel" layoutX="54.0" layoutY="91.0" prefHeight="17.0" prefWidth="459.0" textFill="#119740">
-         <font>
-            <Font name="Tahoma" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="confirmPasswordLabel" layoutX="175.0" layoutY="282.0" prefHeight="17.0" prefWidth="177.0" textFill="#d01d17">
-         <font>
-            <Font size="12.0" />
-         </font>
-      </Label>
-   </children>
+    <children>
+        <AnchorPane prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: #3366ff;">
+            <children>
+                <ImageView fx:id="registerImageView" fitHeight="45.0" fitWidth="51.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../images/lock.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="85.0" layoutY="34.0" text="User Registration" textFill="WHITE">
+                    <font>
+                        <Font name="Microsoft Sans Serif" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Label layoutX="54.0" layoutY="131.0" styleClass="text" stylesheets="@styleEmp.css" text="First Name :">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Label>
+        <TextField fx:id="firstNameTextField" layoutX="175.0" layoutY="124.0" prefHeight="30.0" prefWidth="340.0" promptText="First Name">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></TextField>
+        <Label layoutX="54.0" layoutY="216.0" text="Username :">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Label>
+        <TextField fx:id="usernameTextField" layoutX="175.0" layoutY="209.0" prefHeight="30.0" prefWidth="340.0" promptText="Username">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></TextField>
+        <Label layoutX="54.0" layoutY="258.0" text="Password :">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Label>
+        <Label layoutX="54.0" layoutY="174.0" text="Last Name :">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Label>
+        <TextField fx:id="lastNameTextField" layoutX="175.0" layoutY="167.0" prefHeight="30.0" prefWidth="340.0" promptText="Last name">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></TextField>
+        <Label layoutX="54.0" layoutY="302.0" text="Confirm Password :">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Label>
+        <Button fx:id="registerButton" layoutX="175.0" layoutY="345.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Register" textFill="WHITE">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Button>
+        <Button fx:id="closeButton" layoutX="389.0" layoutY="345.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: #3366ff;" text="Close" textFill="WHITE">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></Button>
+        <PasswordField fx:id="setPasswordField" layoutX="175.0" layoutY="252.0" prefHeight="30.0" prefWidth="340.0" promptText="Password">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></PasswordField>
+        <PasswordField fx:id="confirmPasswordField" layoutX="175.0" layoutY="296.0" prefHeight="30.0" prefWidth="340.0" promptText="Password">
+            <font>
+                <Font name="Tahoma" size="13.0" />
+            </font></PasswordField>
+        <Label fx:id="registrationMessageLabel" layoutX="54.0" layoutY="91.0" prefHeight="17.0" prefWidth="459.0" textFill="#119740">
+            <font>
+                <Font name="Tahoma" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="confirmPasswordLabel" layoutX="175.0" layoutY="282.0" prefHeight="17.0" prefWidth="177.0" textFill="#d01d17">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

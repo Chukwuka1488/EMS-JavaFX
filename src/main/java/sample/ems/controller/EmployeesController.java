@@ -8,10 +8,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -20,11 +24,9 @@ import sample.ems.DatabaseConnection;
 import sample.ems.model.EmployeesData;
 import sample.ems.Main;
 
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
 import java.sql.*;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -39,10 +41,16 @@ public class EmployeesController implements Initializable {
     private Button addEmployeeButton;
 
     @FXML
+    private Button editEmployeeButton;
+
+    @FXML
     private Button deleteEmployeeButton;
 
     @FXML
     private Button backEmployeesButton;
+
+    @FXML
+    private Button viewEmployeeButton;
 
     @FXML
     private Button exportButton;
@@ -301,6 +309,29 @@ public class EmployeesController implements Initializable {
         }
     }
 
+    // view employee form stage
+    public void viewEmployeeButtonOnAction(ActionEvent actionEvent) {
+        viewEmployeeFormStage();
+    }
+
+    public void viewEmployeeFormStage() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("viewEmployee.fxml"));
+            Stage viewEmpStage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), 800, 700);
+            ViewEmployeeController pass = fxmlLoader.getController();
+            pass.passEmployees(employeeTableView.getSelectionModel().getSelectedItem());
+            viewEmpStage.setTitle("Employee Management System");
+            viewEmpStage.setScene(scene);
+            viewEmpStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+
     // delete employee
     public void deleteEmployeeButtonOnAction(ActionEvent event) {
         deleteEmployee();
@@ -335,6 +366,11 @@ public class EmployeesController implements Initializable {
 
 
     public void exportButtonOnAction(ActionEvent event) {
+        saveFile();
+    }
+
+
+    public static void saveFile() {
         Connection conn = DatabaseConnection.Connector();
         PreparedStatement pst;
         ResultSet rs;
@@ -397,16 +433,36 @@ public class EmployeesController implements Initializable {
                 row.createCell(20).setCellValue(rs.getString("Manager2"));
                 index++;
             }
-            FileOutputStream fileOut = new FileOutputStream("/Users/haykay14/Desktop/EmployeeData.xlsx");
 
-            System.out.println("File Exported");
-            workbook.write(fileOut);
+
+            FileChooser fileChooser = new FileChooser();
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Any Files", "*.xlsx");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            File file = fileChooser.showSaveDialog(null);
+            FileOutputStream fileOut = null;
+            if (file != null) {
+                String exportFilePath = file.getAbsolutePath();
+                System.out.println("Path to export file" + " " + exportFilePath);
+                fileOut = new FileOutputStream(exportFilePath);
+
+                // exporting Excel to path
+                workbook.write(fileOut);
+            }
+
+            // closing the Excel workbook
+            workbook.close();
+
+            //closing the file writer object
             fileOut.close();
 
             pst.close();
             rs.close();
-
-        } catch (SQLException | IOException e) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -415,4 +471,5 @@ public class EmployeesController implements Initializable {
         Stage stage = (Stage) backEmployeesButton.getScene().getWindow();
         stage.close();
     }
+
 }

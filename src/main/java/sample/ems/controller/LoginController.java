@@ -22,16 +22,21 @@ import sample.ems.Main;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.*;
+import java.sql.SQLException;
+
 import java.util.ResourceBundle;
 
 
 public class LoginController implements Initializable {
 
-    public sample.ems.model.LoginModel LoginModel = new LoginModel();
+
+    public sample.ems.model.LoginModel  LoginModel = new LoginModel();
 
     @FXML
-    private Button registerButton;
+    private PasswordField enterPasswordField;
+
+    @FXML
+    private ImageView lockImageView;
 
     @FXML
     private Button loginButton;
@@ -43,13 +48,10 @@ public class LoginController implements Initializable {
     private ImageView managementImageView;
 
     @FXML
-    private ImageView lockImageView;
+    private Button registerButton;
 
     @FXML
     private TextField usernameTextField;
-
-    @FXML
-    private PasswordField enterPasswordField;
 
     /*
      * For the images and Icons on the page
@@ -63,6 +65,7 @@ public class LoginController implements Initializable {
         File lockImageFile = new File("images/lock.png");
         Image lockImage = new Image(lockImageFile.toURI().toString());
         lockImageView.setImage(lockImage);
+        System.out.println("Yes");
 
         if (LoginModel.isDbConnected()) {
             loginMessageLabel.setText("Database Connected!");
@@ -73,7 +76,8 @@ public class LoginController implements Initializable {
     }
 
 
-    public void loginButtonOnAction(ActionEvent event){
+    public void loginButtonOnAction(ActionEvent event) {
+//        homeFormStage();
         try {
             if (LoginModel.validateLogin(usernameTextField.getText(), enterPasswordField.getText())) {
                 loginMessageLabel.setText("Login Successful!");
