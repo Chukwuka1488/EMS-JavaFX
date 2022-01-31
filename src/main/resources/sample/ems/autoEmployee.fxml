@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ems.controller.AutoEmployeeController">
+    <children>
+        <Pane prefHeight="800.0" prefWidth="1500.0">
+            <children>
+                <Pane layoutX="-2.0" prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: #2a62fe;">
+                    <children>
+                        <Button fx:id="backEmployeesButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
+                                onAction="#backEmployeesButtonOnAction" prefHeight="30.0" prefWidth="30.0"
+                                stylesheets="@styleEmp.css" textFill="WHITE">
+                            <graphic>
+                                <FontAwesomeIcon fill="WHITE" glyphName="ARROW_CIRCLE_LEFT" size="2em"/>
+                            </graphic>
+                        </Button>
+                        <Label layoutX="118.0" layoutY="43.0" text="Search" textFill="WHITE">
+                            <font>
+                                <Font name="Tahoma" size="14.0"/>
+                            </font>
+                        </Label>
+                        <TextField fx:id="keywordTextField" layoutX="171.0" layoutY="40.0" prefHeight="25.0"
+                                   prefWidth="400.0" promptText="Keywords...">
+                            <font>
+                                <Font name="Tahoma" size="13.0"/>
+                            </font>
+                        </TextField>
+                    </children>
+                </Pane>
+                <Button fx:id="addEmployeeButton" contentDisplay="TOP" layoutX="48.0" layoutY="118.0"
+                        mnemonicParsing="false" onAction="#addEmployeeButtonOnAction" prefHeight="50.0"
+                        prefWidth="100.0" stylesheets="@styleEmp.css" text="Add Employee" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.5em"/>
+                    </graphic>
+                    <font>
+                        <Font name="Tahoma" size="13.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="importButton" contentDisplay="TOP" layoutX="698.0" layoutY="118.0"
+                        mnemonicParsing="false" onAction="#importButtonOnAction" prefHeight="50.0" prefWidth="109.0"
+                        stylesheets="@styleEmp.css" text="Import /Refresh" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CLOUD_UPLOAD" size="1.5em"/>
+                    </graphic>
+                    <font>
+                        <Font name="Tahoma" size="13.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="exportButton" contentDisplay="TOP" layoutX="838.0" layoutY="118.0"
+                        mnemonicParsing="false" onAction="#exportButtonOnAction" prefHeight="50.0" prefWidth="70.0"
+                        stylesheets="@styleEmp.css" text="Export " textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CLOUD_DOWNLOAD" size="1.5em"/>
+                    </graphic>
+                    <font>
+                        <Font name="Tahoma" size="13.0"/>
+                    </font>
+                </Button>
+                <TableView fx:id="employeeTableView" layoutX="48.0" layoutY="190.0" prefHeight="550.0"
+                           prefWidth="1400.0" stylesheets="@styleEmp.css">
+                    <columns>
+                        <TableColumn fx:id="idTableColumn" prefWidth="51.0" text="ID"/>
+                        <TableColumn fx:id="sapTableColumn" minWidth="4.0" prefWidth="65.0" text="SAP_Personalnummer"/>
+                        <TableColumn fx:id="spalte1TableColumn" minWidth="0.0" prefWidth="68.0" text="Spalte1"/>
+                        <TableColumn fx:id="vornameTableColumn" prefWidth="47.0" text="Vorname"/>
+                        <TableColumn fx:id="nachnameTableColumn" prefWidth="46.0" text="Nachname"/>
+                        <TableColumn fx:id="riTableColumn" prefWidth="53.0" text="RI"/>
+                        <TableColumn fx:id="verfugbarkeitTableColumn" prefWidth="52.0" text="Verfugbarkeit"/>
+                        <TableColumn fx:id="berufserfahrungTableColumn" prefWidth="51.0" text="Berufserfahrung"/>
+                        <TableColumn fx:id="anuTableColumn" prefWidth="53.0" text="ANU"/>
+                        <TableColumn fx:id="mobilitatTableColumn" prefWidth="61.59991455078125" text="Mobilitat"/>
+                        <TableColumn fx:id="kompetenzenTableColumn" prefWidth="77.60009765625" text="Kompetenzen"/>
+                        <TableColumn fx:id="toolsTableColumn" prefWidth="48.0" text="Tools"/>
+                        <TableColumn fx:id="sprachenTableColumn" prefWidth="75.199951171875" text="Sprachen"/>
+                        <TableColumn fx:id="rtTableColumn" prefWidth="55.20001220703125" text="RT"/>
+                        <TableColumn fx:id="aktionenTableColumn" prefWidth="60.79998779296875" text="Aktionen"/>
+                        <TableColumn fx:id="projektwunschTableColumn" prefWidth="88.79998779296875"
+                                     text="Projektwunsch"/>
+                        <TableColumn fx:id="schwerpunktTableColumn" prefWidth="87.2000732421875" text="Schwerpunkt"/>
+                        <TableColumn fx:id="divisionTableColumn" prefWidth="64.800048828125" text="Division"/>
+                        <TableColumn fx:id="einheitTableColumn" prefWidth="67.2000732421875" text="Einheit"/>
+                        <TableColumn fx:id="position_RITableColumn" prefWidth="86.39990234375" text="Position_RI"/>
+                        <TableColumn fx:id="manager1TableColumn" minWidth="0.0" prefWidth="71.199951171875"
+                                     text="Manager1"/>
+                        <TableColumn fx:id="manager2TableColumn" minWidth="0.0" prefWidth="80.7999267578125"
+                                     text="Manager2"/>
+                    </columns>
+                </TableView>
+                <Button fx:id="editEmployeeButton" contentDisplay="TOP" layoutX="193.0" layoutY="118.0"
+                        mnemonicParsing="false" onAction="#editEmployeeButtonOnAction" prefHeight="50.0"
+                        prefWidth="100.0" stylesheets="@styleEmp.css" text="Edit Employee" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="EDIT" size="1.5em"/>
+                    </graphic>
+                    <font>
+                        <Font name="Tahoma" size="13.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="deleteEmployeeButton" contentDisplay="TOP" layoutX="335.0" layoutY="118.0"
+                        mnemonicParsing="false" onAction="#deleteEmployeeButtonOnAction" prefHeight="50.0"
+                        prefWidth="123.0" stylesheets="@styleEmp.css" text="Delete Employee" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="TRASH" size="1.5em"/>
+                    </graphic>
+                    <font>
+                        <Font name="Tahoma" size="13.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="viewEmployeeButton" contentDisplay="TOP" layoutX="505.0" layoutY="118.0"
+                        mnemonicParsing="false" onAction="#viewEmployeeButtonOnAction" prefHeight="50.0"
+                        prefWidth="109.0" stylesheets="@styleEmp.css" text="View Employee" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="EYE" size="1.5em"/>
+                    </graphic>
+                    <font>
+                        <Font name="Tahoma" size="13.0"/>
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

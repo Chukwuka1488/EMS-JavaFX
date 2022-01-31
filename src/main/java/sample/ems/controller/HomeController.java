@@ -230,4 +230,80 @@ public class HomeController implements Initializable {
         }
     }
 
+    public void autoEmployeesFormStage() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("autoEmployee.fxml"));
+
+            Rectangle2D employeeRect = Screen.getPrimary().getVisualBounds();
+            System.out.println(employeeRect);
+
+            // Responsive Design
+            int sceneWidth = 0;
+            int sceneHeight = 0;
+
+            if (screenWidth <= 800 && screenHeight <= 600) {
+                sceneWidth = 600;
+                sceneHeight = 350;
+            } else if (screenWidth <= 1280 && screenHeight <= 720) {
+                sceneWidth = 1200;
+                sceneHeight = 600;
+            } else if (screenWidth <= 1920 && screenHeight <= 1080) {
+                sceneWidth = 1500;
+                sceneHeight = 800;
+            }
+
+            Stage autoEmployeeStage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
+            autoEmployeeStage.setTitle("Automotive Employees");
+            autoEmployeeStage.setScene(scene);
+            autoEmployeeStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void autoEmployeesButtonOnAction(ActionEvent actionEvent) {
+        autoEmployeesFormStage();
+    }
+
+    public void aeroEmployeesFormStage() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("aeroEmployee.fxml"));
+
+            Rectangle2D employeeRect = Screen.getPrimary().getVisualBounds();
+            System.out.println(employeeRect);
+
+            // Responsive Design
+            int sceneWidth = 0;
+            int sceneHeight = 0;
+
+            if (screenWidth <= 800 && screenHeight <= 600) {
+                sceneWidth = 600;
+                sceneHeight = 350;
+            } else if (screenWidth <= 1280 && screenHeight <= 720) {
+                sceneWidth = 1200;
+                sceneHeight = 600;
+            } else if (screenWidth <= 1920 && screenHeight <= 1080) {
+                sceneWidth = 1500;
+                sceneHeight = 800;
+            }
+
+            Stage aeroEmployeeStage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), sceneWidth, sceneHeight);
+            aeroEmployeeStage.setTitle("Aerospace Employees");
+            aeroEmployeeStage.setScene(scene);
+            aeroEmployeeStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+    public void aeroEmployeesButtonOnAction(ActionEvent actionEvent) {
+        aeroEmployeesFormStage();
+    }
+
+
 }

@@ -112,6 +112,13 @@ public class EditEmployeeController implements Initializable {
     private ObservableList<EmployeesData> employeesData;
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        File addEmpImageFile = new File("images/lock.png");
+        Image addEmpImage = new Image(addEmpImageFile.toURI().toString());
+        addEmpImageView.setImage(addEmpImage);
+    }
+
     public void passEmployees(EmployeesData selectedEmployee) {
 
         // Local static employee object will be used in our pass employee method
@@ -224,14 +231,6 @@ public class EditEmployeeController implements Initializable {
     @FXML
     void quitButtonHomePageOnAction(MouseEvent event) {
 
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        File addEmpImageFile = new File("images/lock.png");
-        Image addEmpImage = new Image(addEmpImageFile.toURI().toString());
-        addEmpImageView.setImage(addEmpImage);
     }
 
 
